@@ -1,0 +1,1 @@
+-- INSERT INTO players(firstName, lastName, age, number) VALUES ('Piotr','Marciniak',26,7);
