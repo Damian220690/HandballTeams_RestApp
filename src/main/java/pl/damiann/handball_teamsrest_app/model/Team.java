@@ -10,7 +10,7 @@ public class Team {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "team")
     private List<Player> teamPlayers;
 
     public Team() {

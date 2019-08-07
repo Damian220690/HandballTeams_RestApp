@@ -1,9 +1,6 @@
 package pl.damiann.handball_teamsrest_app.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "players")
 public class Player {
@@ -16,16 +13,20 @@ public class Player {
     private int age;
     private int number;
     private String position;
+    @ManyToOne
+    @JoinColumn(name = "team_id")
+    private Team team;
 
     public Player() {
     }
 
-    public Player(String firstName, String lastName, int age, int number, String position) {
+    public Player(String firstName, String lastName, int age, int number, String position, Team team) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.number = number;
         this.position = position;
+        this.team = team;
     }
 
     public long getId() {
@@ -74,5 +75,13 @@ public class Player {
 
     public void setPosition(String position) {
         this.position = position;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
     }
 }
