@@ -84,4 +84,17 @@ public class Player {
     public void setTeam(Team team) {
         this.team = team;
     }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", number=" + number +
+                ", position='" + position + '\'' +
+                ", team=" + team.getName() +
+                '}';
+    }
 }

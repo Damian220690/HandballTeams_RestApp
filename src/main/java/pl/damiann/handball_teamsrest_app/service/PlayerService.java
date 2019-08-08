@@ -16,4 +16,8 @@ public class PlayerService {
     public List<Player> showTeamPlayers(long teamNumber){
         return playerRepository.findAllByTeamId(teamNumber);
     }
+
+    public Player getPlayerByNumber(int number){
+        return playerRepository.findAllByNumber(number);
+    }
 }

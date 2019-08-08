@@ -1,5 +1,7 @@
 package pl.damiann.handball_teamsrest_app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,6 +13,7 @@ public class Team {
     private long id;
     private String name;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "team")
+    @JsonIgnore
     private List<Player> teamPlayers;
 
     public Team() {
