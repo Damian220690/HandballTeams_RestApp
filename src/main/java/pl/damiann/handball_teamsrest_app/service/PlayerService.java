@@ -20,4 +20,12 @@ public class PlayerService {
     public Player getPlayerByNumber(int number){
         return playerRepository.findAllByNumber(number);
     }
+
+    public void addPlayer(Player player){
+        playerRepository.save(player);
+    }
+    public void removePlayer(int number){
+        Player player = playerRepository.findAllByNumber(number);
+        playerRepository.delete(player);
+    }
 }

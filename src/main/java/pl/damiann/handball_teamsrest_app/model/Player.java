@@ -1,17 +1,16 @@
 package pl.damiann.handball_teamsrest_app.model;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity(name = "players")
 public class Player {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int number;
     private String firstName;
     private String lastName;
     private int age;
-    private int number;
     private String position;
     @ManyToOne
     @JoinColumn(name = "team_id")
@@ -29,13 +28,6 @@ public class Player {
         this.team = team;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -85,16 +77,22 @@ public class Player {
         this.team = team;
     }
 
+
     @Override
-    public String toString() {
-        return "Player{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", age=" + age +
-                ", number=" + number +
-                ", position='" + position + '\'' +
-                ", team=" + team.getName() +
-                '}';
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Player player = (Player) o;
+        return getAge() == player.getAge() &&
+                getNumber() == player.getNumber() &&
+                Objects.equals(getFirstName(), player.getFirstName()) &&
+                Objects.equals(getLastName(), player.getLastName()) &&
+                Objects.equals(getPosition(), player.getPosition()) &&
+                Objects.equals(getTeam(), player.getTeam());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getFirstName(), getLastName(), getAge(), getNumber(), getPosition(), getTeam());
     }
 }
